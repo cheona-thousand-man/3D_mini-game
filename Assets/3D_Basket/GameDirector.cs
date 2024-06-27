@@ -33,6 +33,7 @@ public class GameDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Game Started!");
         gameStarted = true;
         this.timerText = GameObject.Find("Time");
         this.pointText = GameObject.Find("Point");
@@ -51,7 +52,7 @@ public class GameDirector : MonoBehaviour
             changeDropSpeed();
         }
 
-        if (this.time <= 0)
+        if (this.time <= 0 && gameStarted)
         {
             GameEnd();
         }
@@ -59,6 +60,7 @@ public class GameDirector : MonoBehaviour
 
     public void GameEnd()
     {
+        Debug.Log("Game Ended!");
         ItemGenerator.SetActive(false);
         gameEndUI.SetActive(true);
         gameStarted = false;
@@ -66,6 +68,7 @@ public class GameDirector : MonoBehaviour
 
     public void GameRestart()
     {
+        Debug.Log("Game Restart!");
         ItemGenerator.SetActive(true);
         gameEndUI.SetActive(false);
         gameStarted = true;
